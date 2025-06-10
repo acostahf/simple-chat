@@ -1,103 +1,204 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+    MessageCircle,
+    Zap,
+    Shield,
+    Globe,
+    ArrowRight,
+    Github,
+} from "lucide-react";
+import { Button } from "../features/ui/components/Button";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+export default function HomePage() {
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+            {/* Header */}
+            <header className="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center py-4">
+                        <div className="flex items-center gap-2">
+                            <MessageCircle className="h-8 w-8 text-blue-600" />
+                            <span className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                                Simple Chat
+                            </span>
+                        </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+                        <div className="flex items-center gap-4">
+                            <Link
+                                href="https://github.com"
+                                className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors"
+                            >
+                                <Github className="h-5 w-5" />
+                            </Link>
+                            <Link href="/sign-in">
+                                <Button variant="outline" size="sm">
+                                    Sign In
+                                </Button>
+                            </Link>
+                            <Link href="/sign-up">
+                                <Button size="sm">Get Started</Button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {/* Hero Section */}
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div className="text-center">
+                    <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
+                        Simple Chat
+                    </h1>
+
+                    <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto">
+                        Experience the power of GPT-4, Claude, Gemini, and
+                        more in one beautiful interface. Built with modern
+                        web technologies for the best chat experience.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                        <Link href="/sign-up">
+                            <Button
+                                size="lg"
+                                className="flex items-center gap-2"
+                            >
+                                Start Chatting
+                                <ArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                        <Link href="/dashboard">
+                            <Button variant="outline" size="lg">
+                                Try Demo
+                            </Button>
+                        </Link>
+                    </div>
+
+                    {/* Features Grid */}
+                    <div className="grid md:grid-cols-3 gap-8 mb-20">
+                        <div className="text-center p-6">
+                            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <Zap className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                            </div>
+                            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                                Multiple AI Models
+                            </h3>
+                            <p className="text-slate-600 dark:text-slate-400">
+                                Access GPT-4, Claude 3.5, Gemini Pro, and
+                                more models in one place
+                            </p>
+                        </div>
+
+                        <div className="text-center p-6">
+                            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <Shield className="h-6 w-6 text-green-600 dark:text-green-400" />
+                            </div>
+                            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                                Secure & Private
+                            </h3>
+                            <p className="text-slate-600 dark:text-slate-400">
+                                Your conversations are encrypted and synced
+                                securely across devices
+                            </p>
+                        </div>
+
+                        <div className="text-center p-6">
+                            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                            </div>
+                            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                                Browser Friendly
+                            </h3>
+                            <p className="text-slate-600 dark:text-slate-400">
+                                Works perfectly on all modern browsers with
+                                responsive design
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Model Showcase */}
+                    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 mb-20">
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">
+                            Supported AI Models
+                        </h2>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            {[
+                                {
+                                    name: "GPT-4 Omni",
+                                    provider: "OpenAI",
+                                    color: "bg-green-500",
+                                },
+                                {
+                                    name: "Claude 3.5 Sonnet",
+                                    provider: "Anthropic",
+                                    color: "bg-orange-500",
+                                },
+                                {
+                                    name: "Gemini Pro 1.5",
+                                    provider: "Google",
+                                    color: "bg-blue-500",
+                                },
+                                {
+                                    name: "Llama 3.1 70B",
+                                    provider: "Meta",
+                                    color: "bg-purple-500",
+                                },
+                            ].map((model) => (
+                                <div
+                                    key={model.name}
+                                    className="text-center"
+                                >
+                                    <div
+                                        className={`w-3 h-3 ${model.color} rounded-full mx-auto mb-2`}
+                                    />
+                                    <h4 className="font-medium text-slate-900 dark:text-slate-100 text-sm">
+                                        {model.name}
+                                    </h4>
+                                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                                        {model.provider}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* CTA Section */}
+                    <div className="text-center">
+                        <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+                            Ready to start chatting?
+                        </h2>
+                        <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
+                            Join thousands of users already using Simple
+                            Chat for their AI conversations.
+                        </p>
+                        <Link href="/sign-up">
+                            <Button
+                                size="lg"
+                                className="flex items-center gap-2 mx-auto"
+                            >
+                                Get Started for Free
+                                <ArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </main>
+
+            {/* Footer */}
+            <footer className="border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    <div className="text-center text-slate-600 dark:text-slate-400">
+                        <p>
+                            &copy; 2024 Simple Chat. Built for the modern
+                            world.
+                        </p>
+                        <p className="mt-2 text-sm">
+                            Made with Next.js, TypeScript, Tailwind CSS,
+                            Convex, and Clerk Auth
+                        </p>
+                    </div>
+                </div>
+            </footer>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
